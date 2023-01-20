@@ -28,4 +28,4 @@ app.get('/chef_table', getAllChefTables);
 //Menu details
 app.post('/menu_details', menuDetails);
 
-app.listen(PORT, () => console.log(`Server started: localhost ${PORT}/`))
+app.listen(PORT, () => console.log(`Server started: localhost`))
