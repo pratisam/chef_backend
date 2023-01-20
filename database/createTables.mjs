@@ -1,4 +1,6 @@
-import client from './client.mjs'
+import client from './client.mjs';
+import dbConnect from './dbConnect.mjs';
+dbConnect();
 const table = `CREATE TABLE "Login"(
     "id" SERIAL NOT NULL,
     "email" VARCHAR(255) NOT NULL,
@@ -49,8 +51,8 @@ ALTER TABLE
 CREATE TABLE "menuDetails"(
     "id" SERIAL NOT NULL,
     "description" VARCHAR(255) NOT NULL,
-    "name" BIGINT NOT NULL,
-    "date" DATE NOT NULL,
+    "name" VARCHAR(255) NOT NULL,
+    "date" VARCHAR(255) NOT NULL,
     "price" DOUBLE PRECISION NOT NULL,
     "userOrder_rating" DOUBLE PRECISION NOT NULL,
     "chefTable_id" BIGINT NOT NULL,
