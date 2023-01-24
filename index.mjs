@@ -13,7 +13,7 @@ const app = express();
 const PORT = process.env.PORT;
 app.use(bodyParser.json());
 app.use(cookie());
-app.use(cors({origin: 'http://127.0.0.1:5500'}));
+app.use(cors({origin: 'http://localhost:3000/'}));
 
 
 //Cuisine Types
