@@ -32,11 +32,13 @@ export const chefTable = async (req, res) => {
 //Get all chef tables
 export const getAllChefTables = async (req, res) => {
     try {
-        let result = await client.query(`SELECT * FROM "chefTable"`);
-        res.status(200).json(result.rows);
+        let id = parseInt(req.params.id);
+        let result = await client.query(`SELECT * FROM "chefTable" WHERE id = $1`, [id])
+        res.status(200).json(result.rows)
     }
     catch (error) {
         console.log(error);
         return res.status(500).send({ error: "Error: something went wrong" })
     }
 }
+

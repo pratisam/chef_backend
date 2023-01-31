@@ -7,25 +7,37 @@ import cors from 'cors';
 import {cuisineType, getAllCuisines, getOneCuisine} from './controllers/cuisineType.mjs';
 import {chefTable, getAllChefTables} from './controllers/chefTable.mjs';
 import {menuDetails} from './controllers/menuDetails.mjs';
+import register from './controllers/registration/register.mjs';
+import registerChef from './controllers/registration/registerChef.mjs';
+import logUser from './controllers/registration/login.mjs'
+
 dotenv.config();
 dbConnect();
 const app = express();
 const PORT = process.env.PORT;
 app.use(bodyParser.json());
 app.use(cookie());
-app.use(cors({origin: 'http://localhost:3000/'}));
+app.use(cors({origin: 'http://localhost:3000'}));
 
 
 //Cuisine Types
-app.post('/cuisine_type', cuisineType);
-app.get("/cuisine_type", getAllCuisines);
-app.get("/cuisine_type/:id", getOneCuisine);
+app.post('/home', cuisineType);
+app.get("/home", getAllCuisines);
+app.get("/home/:id", getOneCuisine);
 
 // Chef table info
-app.post('/chef_table', chefTable);
-app.get('/chef_table', getAllChefTables);
+app.post('/home/ChefList', chefTable);
+app.get('/home/:id/ChefList', getAllChefTables);
 
 //Menu details
 app.post('/menu_details', menuDetails);
 
-app.listen(PORT, () => console.log(`Server started: localhost`))
+// Registration
+app.post('/home/LoginPage/userForm', register)
+// Chef registration
+app.post('/home/LoginPage/chefForm', registerChef)
+//Login
+app.post('/home/LoginPage', logUser)
+
+
+app.listen(PORT, () => console.log(`Server started: localhost ${PORT}`))

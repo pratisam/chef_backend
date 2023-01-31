@@ -37,7 +37,7 @@ ON COLUMN
 CREATE TABLE "cuisineType"(
     "id" SERIAL NOT NULL,
     "cuisineType" VARCHAR(255) NOT NULL,
-    "photo" VARCHAR(255) NULL
+    "photo" VARCHAR(255) NOT NULL
 );
 ALTER TABLE
     "cuisineType" ADD PRIMARY KEY("id");
