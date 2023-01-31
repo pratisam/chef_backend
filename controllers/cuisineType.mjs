@@ -4,7 +4,7 @@ import client from "../database/client.mjs";
 export const cuisineType = async (req, res) => {
     try {
         const cuisineDetails = `INSERT INTO  "cuisineType" ("cuisineType", photo)
-        VALUES ($1,$2) RETURNING *`;
+        VALUES ($1, $2) RETURNING *`;
         const {
             cuisineType,
             photo
@@ -39,6 +39,7 @@ export const getAllCuisines = async (req, res) => {
 export const getOneCuisine = async (req, res) => {
     try {
         let id = parseInt(req.params.id);
+        console.log(id)
         let result = await client.query(`SELECT * FROM "cuisineType" WHERE id = ${id}`);
         res.status(200).json(result.rows);
     }
