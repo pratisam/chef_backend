@@ -23,7 +23,7 @@ app.use(bodyParser.json());
 app.use(cookie());
 app.use(cors({origin: 'http://localhost:3000', credentials: true}));
 
-
+console.log('hello world')
 //Cuisine Types
 app.post('/home', cuisineType);
 app.get('/home', getAllCuisines);
