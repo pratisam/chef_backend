@@ -24,7 +24,7 @@ ALTER TABLE
 CREATE TABLE "chefTable"(
     "id" SERIAL NOT NULL,
     "aboutMe" VARCHAR(255) NOT NULL,
-    "cuisineType" VARCHAR(255) NOT NULL,
+    "cuisineType" INTEGER NOT NULL,
     "rating" DOUBLE PRECISION NULL,
     "postCode" BIGINT NOT NULL,
     "chefPhoto" VARCHAR(255) NULL

@@ -6,7 +6,7 @@ import dbConnect from './database/dbConnect.mjs';
 import cors from 'cors';
 import {cuisineType, getAllCuisines, getOneCuisine} from './controllers/cuisineType.mjs';
 import {chefTable, getAllChefTables} from './controllers/chefTable.mjs';
-import {menuDetails} from './controllers/menuDetails.mjs';
+import {menuDetails, getMenuDetails} from './controllers/menuDetails.mjs';
 import register from './controllers/registration/register.mjs';
 import registerChef from './controllers/registration/registerChef.mjs';
 import logUser from './controllers/registration/login.mjs';
@@ -36,6 +36,7 @@ app.get('/home/:id/ChefList', getAllChefTables);
 
 //Menu details
 app.post('/menu_details', menuDetails);
+app.get('/home/:id/Menu', getMenuDetails)
 
 // Registration
 app.post('/home/LoginPage/userForm', register)

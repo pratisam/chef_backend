@@ -16,3 +16,16 @@ export const menuDetails = async (req, res) => {
     }
 }
 
+export const getMenuDetails = async (req, res) => {
+    try {
+        const id = (req.params.id)
+        let result = await client.query(`SELECT * FROM "menuDetails" 
+                WHERE id = ${id};` )
+        res.status(200).json(result.rows)
+    }
+    catch (error) {
+        console.log(error);
+        return res.status(500).send({ error: "Error: something went wrong" })
+    }
+}
+
