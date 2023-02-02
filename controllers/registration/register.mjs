@@ -48,13 +48,13 @@ console.log(user)
                             flag = 0;
                             //If user is not inserted is not inserted to database assigning flag as 0/false.
                             console.error(err);
-                            return res.status(500).json({
+                            return res.send({
                                 error: "Database error"
                             })
                         }
                         else {
                             flag = 1;
-                            res.status(200).send({ message: 'User added to database, not verified' });
+                            res.status(200).send({ message: 'User added to database' });
                         }
                     })
                 //jwt token

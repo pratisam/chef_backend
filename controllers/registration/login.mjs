@@ -30,7 +30,7 @@ const logUser = async (request, response) => {
 
   // If the password is invalid, return an error
   if (!passwordIsValid) {
-    return response.json({ error: "Invalid password" });
+    return response.send({ error: "Invalid password" });
   }
 
   // If the password is valid, generate a JWT that encodes the user's information

@@ -32,8 +32,11 @@ export const chefTable = async (req, res) => {
 //Get all chef tables
 export const getAllChefTables = async (req, res) => {
     try {
-        let id = parseInt(req.params.id);
-        let result = await client.query(`SELECT * FROM "chefTable" WHERE id = $1`, [id])
+        const cuisineType = (req.params.id)
+        let result = await client.query(`SELECT * FROM "chefTable" 
+                INNER JOIN "userTable" 
+                ON "chefTable".id = "userTable"."chefTable_id"
+                WHERE "cuisineType" = ${cuisineType};` )
         res.status(200).json(result.rows)
     }
     catch (error) {
@@ -42,3 +45,19 @@ export const getAllChefTables = async (req, res) => {
     }
 }
 
+
+// export const chefInfo = async(req, res) => {
+//     const cuisineType = (req.params.id)
+//     //do the params here
+//     try {
+//         const eachChef = await client.query(
+//         `SELECT * FROM "chefTable" 
+//         INNER JOIN "userTable" 
+//         ON "chefTable".id = "userTable"."chefTable_id"
+//         WHERE "cuisineType" = ${cuisineType};` ) 
+//             res.json(eachChef.rows);
+//     } catch (err) {
+//         console.error(err)
+//         return err.status(500).send({error:"internal server error"})
+//     }
+// }
