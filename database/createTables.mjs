@@ -10,22 +10,22 @@ ALTER TABLE
     "Login" ADD PRIMARY KEY("id");
 CREATE TABLE "userTable"(
     "id" SERIAL NOT NULL,
-    "name" VARCHAR(255) NOT NULL,
-    "pre-nom" VARCHAR(255) NOT NULL,
+    "firstName" VARCHAR(255) NOT NULL,
+    "secondName" VARCHAR(255) NOT NULL,
     "address" VARCHAR(255) NOT NULL,
     "postCode" INTEGER NOT NULL,
     "phone" INTEGER NOT NULL,
     "chefTable_id" INTEGER NULL,
     "login_id" BIGINT NOT NULL,
-    "userOrders_id" BIGINT NOT NULL
+    "userOrders_id" BIGINT NULL
 );
 ALTER TABLE
     "userTable" ADD PRIMARY KEY("id");
 CREATE TABLE "chefTable"(
     "id" SERIAL NOT NULL,
     "aboutMe" VARCHAR(255) NOT NULL,
-    "cuisineType" VARCHAR(255) NOT NULL,
-    "rating" DOUBLE PRECISION NOT NULL,
+    "cuisineType" INTEGER NOT NULL,
+    "rating" DOUBLE PRECISION NULL,
     "postCode" BIGINT NOT NULL,
     "chefPhoto" VARCHAR(255) NULL
 );
@@ -51,10 +51,10 @@ ALTER TABLE
 CREATE TABLE "menuDetails"(
     "id" SERIAL NOT NULL,
     "description" VARCHAR(255) NOT NULL,
-    "name" VARCHAR(255) NOT NULL,
+    "menuName" VARCHAR(255) NOT NULL,
     "date" VARCHAR(255) NOT NULL,
     "price" DOUBLE PRECISION NOT NULL,
-    "userOrder_rating" DOUBLE PRECISION NOT NULL,
+    "userOrder_rating" DOUBLE PRECISION NULL,
     "chefTable_id" BIGINT NOT NULL,
     "photoUrl" VARCHAR(255) NULL
 );
@@ -64,7 +64,7 @@ CREATE TABLE "userOrders"(
     "id" SERIAL NOT NULL,
     "menuDetails_id" INTEGER NOT NULL,
     "date" DATE NULL,
-    "rating" DOUBLE PRECISION NOT NULL,
+    "rating" DOUBLE PRECISION  NULL,
     "totalPrice" BIGINT NOT NULL,
     "userTable_id" BIGINT NOT NULL
 );
