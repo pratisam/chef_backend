@@ -48,4 +48,4 @@ app.post('/home/LoginPage', logUser)
 app.post('/home/LoginPage/ForgotPassword', forgotPassword)
 
 
-app.listen(PORT, () => console.log(`Server started: localhost ${PORT}`))
+app.listen(process.env.PORT || 5432, () => console.log(`Server started: localhost ${PORT}`))
