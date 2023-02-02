@@ -1,4 +1,4 @@
-import dotenv from "dotenv";
+import dotenv from 'dotenv';
 import express from 'express';
 import bodyParser from 'body-parser';
 import cookie from 'cookie-parser';
@@ -9,7 +9,11 @@ import {chefTable, getAllChefTables} from './controllers/chefTable.mjs';
 import {menuDetails} from './controllers/menuDetails.mjs';
 import register from './controllers/registration/register.mjs';
 import registerChef from './controllers/registration/registerChef.mjs';
-import logUser from './controllers/registration/login.mjs'
+import logUser from './controllers/registration/login.mjs';
+import forgotPassword from "./controllers/registration/forgotPassword.mjs";
+import chefInfo from './controllers/chefInfo.mjs';
+
+
 
 dotenv.config();
 dbConnect();
@@ -22,12 +26,13 @@ app.use(cors({origin: 'http://localhost:3000'}));
 
 //Cuisine Types
 app.post('/home', cuisineType);
-app.get("/home", getAllCuisines);
-app.get("/home/:id", getOneCuisine);
-
+app.get('/home', getAllCuisines);
+app.get('/home/:id', getOneCuisine);
+app.get('/:id/chefProfileFull', chefInfo)
 // Chef table info
 app.post('/home/ChefList', chefTable);
 app.get('/home/:id/ChefList', getAllChefTables);
+
 
 //Menu details
 app.post('/menu_details', menuDetails);
@@ -38,6 +43,8 @@ app.post('/home/LoginPage/userForm', register)
 app.post('/home/LoginPage/chefForm', registerChef)
 //Login
 app.post('/home/LoginPage', logUser)
+//Forgot password
+app.post('/home/LoginPage/ForgotPassword', forgotPassword)
 
 
 app.listen(PORT, () => console.log(`Server started: localhost ${PORT}`))
