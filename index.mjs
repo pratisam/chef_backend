@@ -2,7 +2,7 @@ import dotenv from 'dotenv';
 import express from 'express';
 import bodyParser from 'body-parser';
 import cookie from 'cookie-parser';
-// import dbConnect from './database/dbConnect.mjs';
+import dbConnect from './database/dbConnect.mjs';
 import cors from 'cors';
 import {cuisineType, getAllCuisines, getOneCuisine} from './controllers/cuisineType.mjs';
 import {chefTable, getAllChefTables} from './controllers/chefTable.mjs';
@@ -16,12 +16,12 @@ import chefInfo from './controllers/chefInfo.mjs';
 
 
 dotenv.config();
-// dbConnect();
+dbConnect(); 
 const app = express();
 const PORT = process.env.PORT;
 app.use(bodyParser.json());
 app.use(cookie());
-app.use(cors({origin: 'http://localhost:3000'}));
+app.use(cors({origin: 'http://localhost:3001'}));
 
 console.log('hello world')
 //Cuisine Types
