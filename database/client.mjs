@@ -1,14 +1,25 @@
-import pkg from "pg";
-import dotenv from "dotenv";
+import * as dotenv from 'dotenv'
+import pkg from 'pg';
+
+dotenv.config()
 const { Client } = pkg;
-dotenv.config();
+
 
 const client = new Client({
-    user : process.env.USER,
-    password : process.env.PASSWORD,
-    host : process.env.HOST,
-    port : 5432,
-    database: process.env.DATABASE
+connectionString: process.env.DATABASE_URL,
+ssl: {
+    rejectUnauthorized: false
+}
+});
 
+client.connect((err) => {
+if (err) {
+    console.error('connection error', err.stack)
+} else {
+    console.log('connected')
+}
 })
+
+
+
 export default client;
