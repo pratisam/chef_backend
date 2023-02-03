@@ -13,7 +13,7 @@
   },
   "scripts": {
     "dev": "nodemon index.mjs",
-    "start": "nodemon index.mjs"
+    "start": "node index.mjs"
 
   },
   "devDependencies": {
