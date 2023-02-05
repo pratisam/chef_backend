@@ -21,7 +21,7 @@ const app = express();
 const PORT = process.env.PORT;
 app.use(bodyParser.json());
 app.use(cookie());
-app.use(cors({origin: 'http://localhost:3001'}));
+app.use(cors({origin: 'https://homechefbackend.herokuapp.com'}));
 
 console.log('hello world')
 //Cuisine Types
