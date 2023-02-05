@@ -21,7 +21,7 @@ const app = express();
 const PORT = process.env.PORT;
 app.use(bodyParser.json());
 app.use(cookie());
-app.use(cors({origin: 'https://homechefbackend.herokuapp.com'}));
+app.use(cors({origin: 'https://homechefbecode.netlify.app/'}));
 
 console.log('hello world')
 //Cuisine Types
